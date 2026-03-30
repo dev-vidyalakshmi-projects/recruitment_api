@@ -3,7 +3,8 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\JobController;
-
+use App\Http\Controllers\Api\ApplicationController;
+use App\Http\Controllers\Api\CandidateController;
 /*
 |--------------------------------------------------------------------------
 | API Routes

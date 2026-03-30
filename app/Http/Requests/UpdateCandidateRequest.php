@@ -1,10 +1,10 @@
 <?php
 
 namespace App\Http\Requests;
-use Illuminate\Support\Facades\Log;
+
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreApplicationRequest extends FormRequest
+class UpdateCandidateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -21,10 +21,11 @@ class StoreApplicationRequest extends FormRequest
      */
     public function rules(): array
     {
-        Log::info('Incoming application requests');
         return [
-            'candidate_id' => 'required|exists:candidates,id',
-            'job_id' => 'required|exists:jobs,id'
+             'name' => 'sometimes|string|max:255',
+             'email' => 'sometimes|email|unique:candidates,email',
+             'phone' => 'nullable|string|max:20',
+             'resume' => 'nullable|file|mimes:pdf,doc,docx|max:2048'
         ];
     }
 }

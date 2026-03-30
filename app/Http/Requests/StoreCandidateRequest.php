@@ -11,7 +11,7 @@ class StoreCandidateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class StoreCandidateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+             'name' => 'required|string|max:255',
+             'email' => 'required|email|unique:candidates,email',
+             'phone' => 'nullable|string|max:20',
+             'resume' => 'nullable|file|mimes:pdf,doc,docx|max:2048'
         ];
     }
 }
